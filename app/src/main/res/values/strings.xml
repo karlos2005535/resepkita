@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">resep kita</string>
+    <string name="favorite_button_desc">Favorite Button</string>
+    <string name="image_desc">Recipe image</string>
+</resources>
