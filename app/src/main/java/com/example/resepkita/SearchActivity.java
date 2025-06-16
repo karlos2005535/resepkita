@@ -31,6 +31,7 @@ public class SearchActivity extends AppCompatActivity implements ResepAdapter.On
     private ResepAdapter resepAdapter;
     private List<Resep> searchResultsList;
     private DatabaseHelper db;
+//komponen yang di gunakan dalam pencarian resep
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class SearchActivity extends AppCompatActivity implements ResepAdapter.On
         etSearchQuery = findViewById(R.id.et_search_query);
         btnSearch = findViewById(R.id.btn_search);
         rvSearchResults = findViewById(R.id.rv_search_results);
-
+//menghubungkan data base ke pencarian
         db = new DatabaseHelper(this);
         searchResultsList = new ArrayList<>();
         resepAdapter = new ResepAdapter(this, searchResultsList);
@@ -48,7 +49,7 @@ public class SearchActivity extends AppCompatActivity implements ResepAdapter.On
         rvSearchResults.setLayoutManager(new LinearLayoutManager(this));
         rvSearchResults.setAdapter(resepAdapter);
 
-        // Mengganti Anonymous new View.OnClickListener() dengan lambda
+        // memanggil pencariah sat tombol pencarian di pencet
         btnSearch.setOnClickListener(v -> performSearch());
 
         // Mengganti Anonymous new TextView.OnEditorActionListener() dengan lambda
@@ -63,19 +64,18 @@ public class SearchActivity extends AppCompatActivity implements ResepAdapter.On
         etSearchQuery.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Not used
+                // tidak digunakan tapi kebutuhan interface
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Perform search automatically as text changes
-                // Ini akan memicu pencarian setiap kali teks berubah
+                 // Ini akan memicu pencarian setiap kali teks berubah
                 performSearch();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                // Not used
+                // digunakan untuk menangani aksi setelah teks diubah sepenuhnya
             }
         });
     }
